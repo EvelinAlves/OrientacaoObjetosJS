@@ -8,7 +8,7 @@ import { Gerente } from "./Funcionario/Gerente.js";
 import { SistemaAutenticacao } from "./SistemaAutenticacao.js";
 
 //Cliente
-const cliente = new Cliente('Evelin', 12345678910);
+const cliente = new Cliente('Evelin', 12345678910, "123");
 
 //Contas
 const contaCorrente = new ContaCorrente(1001, cliente);
@@ -19,8 +19,14 @@ const contaSalario = new ContaSalario(100, 1001, cliente);
 const gerente = new Gerente("Joana", 12345612352, 10000.00);
 const diretor = new Diretor("Hérina", 25896314785, 20000.00);
 
-diretor.cadastrarSenha('123456');
+gerente.cadastrarSenha('456');
+diretor.cadastrarSenha('789');
 
-const estaLogado = SistemaAutenticacao.login(diretor, "123456");
-console.log(estaLogado);
+const clienteEstaLogado = SistemaAutenticacao.login(cliente, "123");
+const gerenteEstaLogado = SistemaAutenticacao.login(gerente, "456");
+const diretorEstaLogado = SistemaAutenticacao.login(diretor, "789");
+
+console.log(clienteEstaLogado);
+console.log(gerenteEstaLogado);
+console.log(diretorEstaLogado);
 
